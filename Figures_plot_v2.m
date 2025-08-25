@@ -17,11 +17,11 @@ h(1)=1;
 PD_test = [x_max/2, 0, 0];
 
 plotCoverage(LED, RIS, x_max, y_max, z_max, alpha, beta, Norm, w, h);
-%% Figure 1.1 v2
+%% Figure 2
 
 %clear variables
 clear; clc; close all;
-load("figure1_1_v2.mat");
+load("figure2.mat");
 
 f1=figure();
 f1.Position= [0 0 1200 600];
@@ -51,12 +51,12 @@ warning('Have Matlab2TikZ in your path!');
 %matlab2tikz('Fig2_tikz.tex','width','\plotWidth');
 
 %(100./RMSE_RML(1,:)).*RMSE_RML(3,:)
-%% Figure 1.2
+%% Figure 3
 
 %clear variables
 clear; clc; close all;
 
-load("figure1_2.mat");
+load("figure3.mat");
 f1=figure();
 f1.Position= [0 0 1200 600];
 plot(angles,RMSE_RML([1 3 5],:),"LineWidth",2);
@@ -85,12 +85,12 @@ warning('Have Matlab2TikZ in your path!');
 
 matlab2tikz('Fig3_tikz.tex','width','\plotWidth');
 
-%% Figure 1.4
+%% Figure 4
 
 %clear variables
 clear; clc; close all;
 
-load("figure1_4.mat");
+load("figure4.mat");
 
 f1=figure();
 f1.Position= [0 0 1200 600];
@@ -118,12 +118,12 @@ hold off
 warning('Have Matlab2TikZ in your path!');
 
 %matlab2tikz('Fig4_tikz.tex','width','\plotWidth');
-%% Figure 1.6
+%% Figure 5.1
 
 %clear variables
 clear; clc; close all;
 
-load("figure1_6.mat");
+load("figure5_1.mat");
 
 f1=figure();
 f1.Position= [0 0 1200 600];
@@ -150,12 +150,12 @@ hold off
 warning('Have Matlab2TikZ in your path!');
 
 %matlab2tikz('Fig5_tikz.tex','width','\plotWidth');
-%% Figure 1.7
+%% Figure 5.2
 
 %clear variables
 clear; clc; close all;
 
-load("figure1_7.mat");
+load("figure5_2.mat");
 
 f1=figure();
 f1.Position= [0 0 1200 600];
@@ -182,12 +182,12 @@ hold off
 warning('Have Matlab2TikZ in your path!');
 
 matlab2tikz('Fig6_tikz.tex','width','\plotWidth');
-%% Figure 1.12
+%% Figure 6
 
 %clear variables
 clear; clc; close all;
 
-load("figure1_12.mat");
+load("figure6.mat");
 
 f1=figure();
 f1.Position= [0 0 1200 600];
@@ -212,10 +212,10 @@ hold off
 warning('Have Matlab2TikZ in your path!');
 
 %matlab2tikz('Fig7_tikz.tex','width','\plotWidth');
-%% Figure 1.13
+%% Figure 7.1
 clear variables
 
-load("figure1_13.mat");
+load("figure7_1.mat");
 
 f1=figure();
 f1.Position= [0 0 900 700];
@@ -253,10 +253,10 @@ fontsize(16,"points")
 set(gca,"FontSize",22,"FontName","Times New Roman")
 hold off
 
-%% Figure 1.14
+%% Figure 7.2
 clear variables
 
-load("figure1_14_1_test.mat");
+load("figure7_2_1.mat");
 
 RMSE_1_full = RMSE_1;
 
@@ -284,7 +284,7 @@ fontsize(16,"points")
 set(gca,"FontSize",22,"FontName","Times New Roman")
 hold off
 
-load("figure1_14_2.mat");
+load("figure7_2_2.mat");
 
 RMSE_2_full = RMSE_2;
 
@@ -312,7 +312,7 @@ fontsize(16,"points")
 set(gca,"FontSize",22,"FontName","Times New Roman")
 hold off
 
-load("figure1_14_3.mat");
+load("figure7_2_3.mat");
 
 RMSE_3_full = RMSE_3;
 
@@ -352,7 +352,7 @@ tiledlayout(3, 2,'TileSpacing','tight');
 
 caxis_vals = []; % Per rendere le scale coerenti
 
-load("figure1_13.mat");
+load("figure7_1.mat");
 
 ax = nexttile;
 s=pcolor(x,y,result(1).crlb');
@@ -368,7 +368,7 @@ xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
 
 
 
-load("figure1_14_1.mat");
+load("figure7_2_1.mat");
 
 RMSE_1_full = RMSE_1;
 
@@ -395,7 +395,7 @@ ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
 
 
-load("figure1_13.mat");
+load("figure7_1.mat");
 
 ax = nexttile;
 s=pcolor(x,y,result(2).crlb');
@@ -408,7 +408,7 @@ ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
 
 
-load("figure1_14_2.mat");
+load("figure7_2_2.mat");
 
 RMSE_2_full = RMSE_2;
 
@@ -435,7 +435,7 @@ ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
 
 
-load("figure1_13.mat");
+load("figure7_1.mat");
 
 ax = nexttile;
 s=pcolor(x,y,result(3).crlb');
@@ -448,7 +448,7 @@ ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
 
 
-load("figure1_14_3.mat");
+load("figure7_2_3.mat");
 
 RMSE_3_full = RMSE_3;
 
@@ -507,7 +507,7 @@ tiledlayout(3, 2,'TileSpacing','tight');
 
 caxis_vals = []; % Per rendere le scale coerenti
 
-load("figure1_13.mat");
+load("figure7_1.mat");
 
 ax = nexttile;
 %s=pcolor(x,y,result(1).crlb');
@@ -523,7 +523,7 @@ xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
 
 
 
-load("figure1_14_1.mat");
+load("figure7_2_1.mat");
 
 RMSE_1_full = RMSE_1;
 
@@ -550,7 +550,7 @@ ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
 
 
-load("figure1_13.mat");
+load("figure7_1.mat");
 
 ax = nexttile;
 %s=pcolor(x,y,result(2).crlb');
@@ -563,7 +563,7 @@ ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
 
 
-load("figure1_14_2.mat");
+load("figure7_2_2.mat");
 
 RMSE_2_full = RMSE_2;
 
@@ -590,7 +590,7 @@ ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
 
 
-load("figure1_13.mat");
+load("figure7_1.mat");
 
 ax = nexttile;
 %s=pcolor(x,y,result(3).crlb');
@@ -603,7 +603,7 @@ ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
 
 
-load("figure1_14_3.mat");
+load("figure7_2_3.mat");
 
 RMSE_3_full = RMSE_3;
 

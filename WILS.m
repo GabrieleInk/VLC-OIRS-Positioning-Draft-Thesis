@@ -1,4 +1,4 @@
-function p=WILS(Coord_Ancore,distanze,initial_guess,zk,w)
+function p=WILS(Coord_Ancore,distanze,initial_guess,zk,w) % Iterative Weighted Least Squares
 W=diag(w);
 M=size(Coord_Ancore,1);
 

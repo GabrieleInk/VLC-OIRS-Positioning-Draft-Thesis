@@ -62,7 +62,7 @@ x0 = estimated_dist_MLcoarse; %valore iniziale, partiamo dalla guess della stima
 %fun = @(x)ML_loglikelihood(x,...); %uso un richiamo parametrico in x (si chiamano funzioni implicite) alla funzione che ho utilizzato a riga 10 e che mi calcola log likelihood
 
 %options = optimset('TolFun', 1e-3,'TolX',1e-3,'MaxFunEvals',3000,'display','off');
-options = optimoptions('fmincon','FunctionTolerance',1e-12,'StepTolerance',1e-12,'OptimalityTolerance',1e-12);
+options = optimoptions('fmincon','Display','none','FunctionTolerance',1e-12,'StepTolerance',1e-12,'OptimalityTolerance',1e-12);
 dist_refined = fmincon(fun,x0,[],[],[],[],0,dist_max,[],options); %stima finale della distanza raffinata tramite ottimizzazione iterativa
 
 d_n=dist_refined;

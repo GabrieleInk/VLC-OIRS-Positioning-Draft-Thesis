@@ -24,7 +24,7 @@ RMSE_RML=zeros(length(test_samples),length(angles));
 RMSE_ML=zeros(length(test_samples),length(angles));
 CRLB=zeros(length(test_samples),length(angles));
 
-times=1; % times=10000
+times=10; % times=10000
 
 d1_r_v=zeros(length(angles),times);
 d1_e_v=zeros(length(angles),times);
@@ -73,4 +73,13 @@ for sample_index=1:length(test_samples)
 end
 
 save("figure3.mat","CRLB","RMSE_ML","RMSE_RML","angles","dist_r","dist_e");
-toc
+elapsedtime3=toc
+if isfile("savings.mat")
+    load("savings.mat");  % carica la struct "savings"
+else
+    savings = struct();   % crea la struct se non esiste
+end
+
+savings.Figure3_generate = elapsedtime3;  % aggiungi/aggiorna campo
+
+save("savings.mat","savings");

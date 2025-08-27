@@ -9,7 +9,7 @@ load("config.mat");
 % Set entities position
 LED     = [x_max/2      , y_max/2      , z_max    ];
 
-trials=100; % trials=10000;
+trials=10000; % trials=10000;
 
 iterations=5;
 
@@ -17,7 +17,7 @@ K0 = 50;
 KN = 100;
 
 RIS=zeros(4,3); % matrice degli specchietti OIRS, sono (x,y) x specchietti e y 3 coordinate
-Norm=zeros(4,3);
+Norm=zeros(4,3);% matrice delle normali degli specchietti OIRS
 initial_alpha=zeros(4,1);
 initial_beta=zeros(4,1);
 alpha=zeros(4,1);
@@ -29,8 +29,8 @@ RIS(1,:)    = [x_max/2      , 0            , 1.5];
 Norm(1,:)=[0 1 0];
 initial_alpha(1) = 0;
 initial_beta(1) = 0;
-w(1)=0.6;
-h(1)=0.6;
+w(1)=0.6; % lunghezza dell'OIRS
+h(1)=0.6; % altezza dell'OIRS
 
 RIS(2,:)    = [0            , y_max/2      , 1.5];
 Norm(2,:)=[1 0 0];
@@ -254,5 +254,14 @@ end
 rmse_2=sqrt((reshape(sum(result),[5,4])./trials)');
 
 save("figure6.mat","rmse_1","rmse_2","crlb_1","crlb_2","iterations");
-toc
+elapsedtime6=toc
+if isfile("savings.mat")
+    load("savings.mat");  % carica la struct "savings"
+else
+    savings = struct();   % crea la struct se non esiste
+end
+
+savings.Figure6_generate = elapsedtime6;  % aggiungi/aggiorna campo
+
+save("savings.mat","savings");
 

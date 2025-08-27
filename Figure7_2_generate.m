@@ -320,4 +320,13 @@ for RIS_config=1:1
     end
 
 end
-toc
+elapsedtime7_2=toc
+if isfile("savings.mat")
+    load("savings.mat");  % carica la struct "savings"
+else
+    savings = struct();   % crea la struct se non esiste
+end
+
+savings.Figure7_2_generate = elapsedtime7_2;  % aggiungi/aggiorna campo
+
+save("savings.mat","savings");

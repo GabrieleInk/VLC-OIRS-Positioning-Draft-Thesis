@@ -63,4 +63,13 @@ for sample_index=1:length(test_samples)
 end
 
 save("figure2.mat","CRLB","RMSE_ML","RMSE_RML","SNR_db","dist_r","dist_e");
-toc
+elapsedtime2=toc
+if isfile("savings.mat")
+    load("savings.mat");  % carica la struct "savings"
+else
+    savings = struct();   % crea la struct se non esiste
+end
+
+savings.Figure2_generate = elapsedtime2;  % aggiungi/aggiorna campo
+
+save("savings.mat","savings");

@@ -1,3 +1,5 @@
+%% Performance di localizzazione basata sulla legenda di colori (freddo (~1mm) - caldo (~4mm) quindi errore commettibile più alto) con RMSE, flusso luminoso fisso a 1000lm  e 2 iterazioni dell'algoritmo di adaptive beam steering
+
 clear variables;
 tic
 % Random seed
@@ -12,7 +14,7 @@ KN = 100;
 % Set entities position
 LED     = [x_max/2      , y_max/2      , z_max    ];
 
-trials=100; % trials=1000;
+trials=10; % trials=1000;
 granularity=100; % granularity=1000;
 thresh=10e-3; % soglia
 iterations=5;
@@ -26,8 +28,10 @@ RMSE_1=NaN(granularity+1,granularity+1);
 RMSE_2=NaN(granularity+1,granularity+1);
 RMSE_3=NaN(granularity+1,granularity+1);
 
-for RIS_config=1:1
+for RIS_config=1:3 % for RIS_config=1:3 per eseguire tutti e tre i casi
     clear RIS Norm alpha beta w h;
+
+    % 4 OIRS
     if RIS_config==1
         RIS=zeros(4,3);
         Norm=zeros(4,3);
@@ -63,7 +67,8 @@ for RIS_config=1:1
         initial_beta(4) = 0;
         w(4)=1;
         h(4)=1;
-
+    
+    % 8 OIRS
     elseif RIS_config==2
         RIS=zeros(8,3);
         Norm=zeros(8,3);
@@ -127,7 +132,8 @@ for RIS_config=1:1
         initial_beta(8) = 0;
         w(8)=1;
         h(8)=1;
-
+    
+    % 12 OIRS   
     elseif RIS_config==3
         RIS=zeros(12,3);
         Norm=zeros(12,3);

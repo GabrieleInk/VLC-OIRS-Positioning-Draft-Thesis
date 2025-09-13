@@ -1,3 +1,5 @@
+%% RMSE confrontato con DEB degli stimatori NLoS ML e RML per valori diversi di campioni di luce non coerente K_1 (nel caso NLoS lo chiamiamo K_1), in funzione del SNR quando OIRS ha l'orientamento iniziale non ottimizzato
+
 clear variables;
 tic
 % Random seed

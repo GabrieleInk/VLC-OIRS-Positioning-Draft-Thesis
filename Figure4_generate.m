@@ -1,3 +1,5 @@
+%% RMSE confrontato con DEB degli stimatori NLoS ML e RML per valori diversi di campioni K_1 (nel caso NLoS lo chiamiamo K_1), in funzione della distanza orizzontale tra PD e OIRS (è la proiezione sul piano orizzontale della distanza tra PD e OIRS)  
+
 clear variables;
 tic
 % Random seed

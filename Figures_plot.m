@@ -18,8 +18,7 @@ PD_test = [x_max/2, 0, 0];
 
 plotCoverage(LED, RIS, x_max, y_max, z_max, alpha, beta, Norm, w, h);
 
-%% Figure 2
-
+%% Figure 2 RMSE confrontato con DEB degli stimatori LoS ML e RML per valori diversi di campioni di luce non coerente K, in funzione del SNR
 %clear variables
 clear; clc; % close all;
 
@@ -46,15 +45,15 @@ set(gca, 'YScale', 'log')
 hold off
 title('Fig. 2');
 
-%exportgraphics(gcf,'Fig2.eps','ContentType','vector','BackgroundColor','none')
+% exportgraphics(gcf,'Fig2.eps','ContentType','vector','BackgroundColor','none')
 
 
-warning('Have Matlab2TikZ in your path!');
+% warning('Have Matlab2TikZ in your path!');
 
-matlab2tikz('Fig2_tikz.tex','width','\plotWidth');
+matlab2tikz('showInfo', false,'Fig2_tikz.tex','width','\plotWidth');
 
 %(100./RMSE_RML(1,:)).*RMSE_RML(3,:)
-%% Figure 3
+%% Figure 3 RMSE confrontato con DEB degli stimatori NLoS ML e RML per valori diversi di campioni di luce non coerente K_1 (nel caso NLoS lo chiamiamo K_1), in funzione dell'angolo azimutale, che descrive lo spostamento del PD lungo un arco di circonferenza attorno all'OIRS
 
 %clear variables
 clear; clc; % close all;
@@ -91,7 +90,8 @@ title('Fig. 3');
 
 matlab2tikz('Fig3_tikz.tex','width','\plotWidth');
 
-%% Figure 4
+%% Figure 4 RMSE confrontato con DEB degli stimatori NLoS ML e RML per valori diversi di campioni K_1 (nel caso NLoS lo chiamiamo K_1), in funzione della distanza orizzontale tra PD e OIRS (è la proiezione sul piano orizzontale della distanza tra PD e OIRS)  
+
 
 %clear variables
 clear; clc; % close all;
@@ -120,12 +120,12 @@ set(gca, 'YScale', 'log')
 hold off
 title('Fig. 4');
 
-%exportgraphics(gcf,'Fig4.eps','ContentType','vector','BackgroundColor','none')
+% exportgraphics(gcf,'Fig4.eps','ContentType','vector','BackgroundColor','none')
 
-warning('Have Matlab2TikZ in your path!');
+% warning('Have Matlab2TikZ in your path!');
 
 matlab2tikz('Fig4_tikz.tex','width','\plotWidth');
-%% Figure 5.1
+%% Figure 5.1 RMSE confrontato con DEB degli stimatori NLoS ML e RML per valori diversi di campioni di luce non coerente K_1 (nel caso NLoS lo chiamiamo K_1), in funzione del SNR quando OIRS ha l'orientamento iniziale non ottimizzato
 
 %clear variables
 clear; clc; % close all;
@@ -153,12 +153,12 @@ set(gca, 'YScale', 'log')
 hold off
 title('Fig. 5(1)');
 
-%exportgraphics(gcf,'Fig5.eps','ContentType','vector','BackgroundColor','none')
+% exportgraphics(gcf,'Fig5.eps','ContentType','vector','BackgroundColor','none')
 
-warning('Have Matlab2TikZ in your path!');
+% warning('Have Matlab2TikZ in your path!');
 
 matlab2tikz('Fig5_tikz.tex','width','\plotWidth');
-%% Figure 5.2
+%% Figure 5.2 RMSE confrontato con DEB degli stimatori NLoS ML e RML per valori diversi di campioni di luce non coerente K_1 (nel caso NLoS lo chiamiamo K_1), in funzione del SNR quando OIRS ha l'orientamento ottimizzato, perfettamente puntato verso il PD
 
 %clear variables
 clear; clc; % close all;
@@ -186,12 +186,12 @@ set(gca, 'YScale', 'log')
 hold off
 title('Fig. 5(2)');
 
-%exportgraphics(gcf,'Fig6.eps','ContentType','vector','BackgroundColor','none');
+% exportgraphics(gcf,'Fig6.eps','ContentType','vector','BackgroundColor','none');
 
-warning('Have Matlab2TikZ in your path!');
+% warning('Have Matlab2TikZ in your path!');
 
 matlab2tikz('Fig6_tikz.tex','width','\plotWidth');
-%% Figure 6
+%% Figure 6 RMSE confrontato con PEB degli stimatori IWLS e ILS per due diversi valori di flusso luminoso p (1000 e 3000 lumens), in funzione delle iterazioni dell'algoritmo di adaptive beam steering
 
 %clear variables
 clear; clc; % close all;
@@ -217,18 +217,18 @@ set(gca, 'YScale', 'log')
 hold off
 title('Fig. 6');
 
-%exportgraphics(gcf,'Fig6.eps','ContentType','vector','BackgroundColor','none');
+% exportgraphics(gcf,'Fig6.eps','ContentType','vector','BackgroundColor','none');
 
-warning('Have Matlab2TikZ in your path!');
+% warning('Have Matlab2TikZ in your path!');
 
 matlab2tikz('Fig6_tikz.tex','width','\plotWidth');
-%% Figure 7.1
+%% Figure 7.1 Performance di localizzazione basata sulla legenda di colori (freddo (~1mm) - caldo (~4mm) quindi errore commettibile più alto) con PEB, flusso luminoso fisso a 1000lm  e 2 iterazioni dell'algoritmo di adaptive beam steering
+
 clear variables
 
-figure(8);
 load("figure7_1.mat");
-
-figure(8).Position= [0 0 900 700];
+f8=figure();
+f8.Position= [0 0 900 700];
 s=pcolor(x,y,result(1).crlb');
 s.FaceColor = 'interp';
 set(s,'LineStyle','none')
@@ -240,9 +240,8 @@ set(gca,"FontSize",22,"FontName","Times New Roman")
 hold off
 title('Fig. 7(1)');
 
-
-f2=figure();
-f2.Position= [0 0 900 700];
+f9=figure();
+f9.Position= [0 0 900 700];
 s=pcolor(x,y,result(2).crlb');
 s.FaceColor = 'interp';
 set(s,'LineStyle','none')
@@ -253,8 +252,8 @@ fontsize(16,"points")
 set(gca,"FontSize",22,"FontName","Times New Roman")
 hold off
 
-f3=figure();
-f3.Position= [0 0 900 700];
+f10=figure();
+f10.Position= [0 0 900 700];
 s=pcolor(x,y,result(3).crlb');
 s.FaceColor = 'interp';
 set(s,'LineStyle','none')
@@ -265,8 +264,9 @@ fontsize(16,"points")
 set(gca,"FontSize",22,"FontName","Times New Roman")
 hold off
 
-%% Figure 7.2
-clear variables
+%% Figure 7.2 Performance di localizzazione basata sulla legenda di colori (freddo (~1mm) - caldo (~4mm) quindi errore commettibile più alto) con RMSE, flusso luminoso fisso a 1000lm  e 2 iterazioni dell'algoritmo di adaptive beam steering
+
+%clear variables
 
 load("figure7_2_1.mat");
 
@@ -284,8 +284,8 @@ for i = 1:n
     end
 end
 
-figure(9);
-f1.Position= [0 0 900 700];
+f11=figure();
+f11.Position= [0 0 900 700];
 s=pcolor(x,y,RMSE_1_full');
 s.FaceColor = 'interp';
 set(s,'LineStyle','none')
@@ -314,8 +314,8 @@ for i = 1:n
     end
 end
 
-f2=figure();
-f2.Position= [0 0 900 700];
+f12=figure();
+f12.Position= [0 0 900 700];
 s=pcolor(x,y,RMSE_2_full');
 s.FaceColor = 'interp';
 set(s,'LineStyle','none')
@@ -325,6 +325,7 @@ xlabel('x [m]');
 fontsize(16,"points")
 set(gca,"FontSize",22,"FontName","Times New Roman")
 hold off
+title('Fig. 7(2)');
 
 load("figure7_2_3.mat");
 
@@ -342,8 +343,8 @@ for i = 1:n
     end
 end
 
-f3=figure();
-f3.Position= [0 0 900 700];
+f13=figure();
+f13.Position= [0 0 900 700];
 s=pcolor(x,y,RMSE_3_full');
 s.FaceColor = 'interp';
 set(s,'LineStyle','none')
@@ -353,15 +354,15 @@ xlabel('x [m]');
 fontsize(16,"points")
 set(gca,"FontSize",22,"FontName","Times New Roman")
 hold off
-title('Fig. 7_2');
+title('Fig. 7(2)');
 
-%% Figure 1-subs
+%% Figure 1-subs 
 
 %clear variables
 clear; clc; % close all;
 
-figure(10)
-f.Position= [0 0 780 1200];
+f14=figure();
+f14.Position= [0 0 780 1200];
 colormap(jet); % Apply jet colormap
 tiledlayout(3, 2,'TileSpacing','tight');
 
@@ -369,19 +370,18 @@ caxis_vals = []; % Per rendere le scale coerenti
 
 load("figure7_1.mat");
 
+
+% Primo subplot, 4 OIRS CRLB
 ax = nexttile;
 s=pcolor(x,y,result(1).crlb');
 s.FaceColor = 'interp';
 caxis_vals = [caxis_vals; caxis];
 pbaspect([1 1 1])
 
-
-
 set(s,'LineStyle','none')
 ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
-
-
+title('4 OIRS CRLB');
 
 load("figure7_2_1.mat");
 
@@ -399,6 +399,8 @@ for i = 1:n
     end
 end
 
+
+% Secondo subplot, 4 OIRS RMSE
 ax = nexttile;
 s=pcolor(x,y,RMSE_1_full');
 s.FaceColor = 'interp';
@@ -408,10 +410,12 @@ pbaspect([1 1 1])
 set(s,'LineStyle','none')
 ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
-
+title('4 OIRS RMSE');
 
 load("figure7_1.mat");
 
+
+% Terzo subplot, 8 OIRS CRLB
 ax = nexttile;
 s=pcolor(x,y,result(2).crlb');
 s.FaceColor = 'interp';
@@ -421,7 +425,7 @@ pbaspect([1 1 1])
 set(s,'LineStyle','none')
 ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
-
+title('8 OIRS CRLB');
 
 load("figure7_2_2.mat");
 
@@ -439,6 +443,8 @@ for i = 1:n
     end
 end
 
+
+% Quarto subplot, 8 OIRS RMSE
 ax = nexttile;
 s=pcolor(x,y,RMSE_2_full');
 s.FaceColor = 'interp';
@@ -448,10 +454,12 @@ pbaspect([1 1 1])
 set(s,'LineStyle','none')
 ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
-
+title('8 OIRS RMSE');
 
 load("figure7_1.mat");
 
+
+% Quinto subplot, 12 OIRS CRLB
 ax = nexttile;
 s=pcolor(x,y,result(3).crlb');
 s.FaceColor = 'interp';
@@ -461,7 +469,7 @@ pbaspect([1 1 1])
 set(s,'LineStyle','none')
 ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
-
+title('12 OIRS CRLB');
 
 load("figure7_2_3.mat");
 
@@ -479,6 +487,8 @@ for i = 1:n
     end
 end
 
+
+% Sesto subplot, 12 OIRS RMSE
 ax = nexttile;
 s=pcolor(x,y,RMSE_3_full');
 s.FaceColor = 'interp';
@@ -488,6 +498,7 @@ pbaspect([1 1 1])
 set(s,'LineStyle','none')
 ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
+title('12 OIRS RMSE');
 
 % Normalizzazione della scala colori
 cmin = min(caxis_vals(:, 1));
@@ -498,7 +509,7 @@ for i = 1:6
 end
 
 % Creazione di una colorbar unica in alto
-%cb = colorbar('northoutside');
+cb = colorbar('northoutside');
 cb.Layout.Tile = 'north';
 
 % Sistemazione delle etichette e miglioramento della visualizzazione
@@ -508,17 +519,15 @@ ax(i).XTick = []; % Remove x-axis ticks
 ax(i).YTick = []; % Remove y-axis ticks
 end
 
-
-
 exportgraphics(gcf,'Fig8.png','BackgroundColor','none','Resolution', 600);%,'ContentType','vector')
 
-%% Figure 2-subs
+%% Figure 2-subs 
 
 %clear variables
 clear; clc; % close all;
 
-figure(11);
-f.Position= [0 0 780 1200];
+f15=figure();
+f15.Position= [0 0 780 1200];
 colormap(jet); % Apply jet colormap
 tiledlayout(3, 2,'TileSpacing','tight');
 
@@ -526,19 +535,17 @@ caxis_vals = []; % Per rendere le scale coerenti
 
 load("figure7_1.mat");
 
+
+% Primo subplot, 4 OIRS CRLB
 ax = nexttile;
-%s=pcolor(x,y,result(1).crlb');
-%s.FaceColor = 'interp';
+s=pcolor(x,y,result(1).crlb');
+s.FaceColor = 'interp';
 caxis_vals = [caxis_vals; caxis];
 pbaspect([1 1 1])
-
-
 
 %set(s,'LineStyle','none')
 ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
-
-
 
 load("figure7_2_1.mat");
 
@@ -556,9 +563,10 @@ for i = 1:n
     end
 end
 
+% Secondo subplot, 4 OIRS RMSE
 ax = nexttile;
-%s=pcolor(x,y,RMSE_1_full');
-%s.FaceColor = 'interp';
+s=pcolor(x,y,RMSE_1_full');
+s.FaceColor = 'interp';
 caxis_vals = [caxis_vals; caxis];
 pbaspect([1 1 1])
 
@@ -569,9 +577,11 @@ xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
 
 load("figure7_1.mat");
 
+
+% Terzo subplot, 8 OIRS PEB
 ax = nexttile;
-%s=pcolor(x,y,result(2).crlb');
-%s.FaceColor = 'interp';
+s=pcolor(x,y,result(2).crlb');
+s.FaceColor = 'interp';
 caxis_vals = [caxis_vals; caxis];
 pbaspect([1 1 1])
 
@@ -595,9 +605,11 @@ for i = 1:n
     end
 end
 
+
+% Quarto subplot, 8 OIRS RMSE
 ax = nexttile;
-%s=pcolor(x,y,RMSE_2_full');
-%s.FaceColor = 'interp';
+s=pcolor(x,y,RMSE_2_full');
+s.FaceColor = 'interp';
 caxis_vals = [caxis_vals; caxis];
 pbaspect([1 1 1])
 
@@ -608,9 +620,11 @@ xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
 
 load("figure7_1.mat");
 
+
+% Quinto subplot, 12 OIRS PEB
 ax = nexttile;
-%s=pcolor(x,y,result(3).crlb');
-%s.FaceColor = 'interp';
+s=pcolor(x,y,result(3).crlb');
+s.FaceColor = 'interp';
 caxis_vals = [caxis_vals; caxis];
 pbaspect([1 1 1])
 
@@ -635,9 +649,11 @@ for i = 1:n
     end
 end
 
+
+% Sesto subplot, 12 OIRS RMSE
 ax = nexttile;
-%s=pcolor(x,y,RMSE_3_full');
-%s.FaceColor = 'interp';
+s=pcolor(x,y,RMSE_3_full');
+s.FaceColor = 'interp';
 caxis_vals = [caxis_vals; caxis];
 pbaspect([1 1 1])
 
@@ -660,9 +676,9 @@ cb.Layout.Tile = 'north';
 % Sistemazione delle etichette e miglioramento della visualizzazione
 ax = findall(gcf, 'Type', 'Axes');
 
-%exportgraphics(gcf,'Fig8.png','BackgroundColor','none');%,'ContentType','vector')
+% exportgraphics(gcf,'Fig8.png','BackgroundColor','none');%,'ContentType','vector')
 
-warning('Have Matlab2TikZ in your path!');
+% warning('Have Matlab2TikZ in your path!');
 
 matlab2tikz('Fig8_tikz.tex','width','\plotWidth');
 

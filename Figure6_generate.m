@@ -1,3 +1,5 @@
+%% RMSE confrontato con PEB degli stimatori IWLS e ILS per due diversi valori di flusso luminoso p (1000 e 3000 lumens), in funzione delle iterazioni dell'algoritmo di adaptive beam steering
+
 clear variables;
 tic
 % Random seed

@@ -1,3 +1,5 @@
+%% Performance di localizzazione basata sulla legenda di colori (freddo (~1mm) - caldo (~4mm) quindi errore commettibile più alto) con PEB, flusso luminoso fisso a 1000lm  e 2 iterazioni dell'algoritmo di adaptive beam steering
+
 
 clear variables;
 tic
@@ -20,8 +22,10 @@ x_scan=0:res:x_max;
 y_scan=0:res:y_max;
 [x,y]=meshgrid(0:res:x_max,0:res:y_max);
 
-for RIS_config=1:3
+for RIS_config=1:3 % for RIS_config=1:1 per eseguire solo il caso con 4 OIRS
     clear RIS Norm alpha beta w h;
+
+    % 4 OIRS
     if RIS_config==1
         RIS=zeros(4,3);
         Norm=zeros(4,3);
@@ -57,7 +61,8 @@ for RIS_config=1:3
         beta(4) = 0;
         w(4)=1;
         h(4)=1;
-
+    
+    % 8 OIRS    
     elseif RIS_config==2
         RIS=zeros(8,3);
         Norm=zeros(8,3);
@@ -122,6 +127,7 @@ for RIS_config=1:3
         w(8)=1;
         h(8)=1;
 
+    % 12 OIRS    
     elseif RIS_config==3
         RIS=zeros(12,3);
         Norm=zeros(12,3);

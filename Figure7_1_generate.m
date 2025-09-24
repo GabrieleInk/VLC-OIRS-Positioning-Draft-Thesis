@@ -22,6 +22,10 @@ x_scan=0:res:x_max;
 y_scan=0:res:y_max;
 [x,y]=meshgrid(0:res:x_max,0:res:y_max);
 
+
+theta1 = -30;  % rotazione degli specchietti di sinistra sul piano (se presenti)
+theta2 = 30;  % rotazione degli specchietti di destra sul piano (se presenti)
+
 for RIS_config=1:3 % for RIS_config=1:1 per eseguire solo il caso con 4 OIRS
     clear RIS Norm alpha beta w h;
 
@@ -72,56 +76,64 @@ for RIS_config=1:3 % for RIS_config=1:1 per eseguire solo il caso con 4 OIRS
         h=zeros(8,1);
 
         RIS(1,:)    = [(x_max/5)*3      , 0            , 1.35];
-        Norm(1,:)=[0 1 0];
+        Norm(1,:) = [-sind(theta1),  cosd(theta1), 0];
+        % Norm(1,:)=[0 1 0];
         alpha(1) = 0;
         beta(1) = 0;
         w(1)=1;
         h(1)=1;
 
         RIS(5,:)    = [(x_max/5)*2      , 0            , 1.35];
-        Norm(5,:)=[0 1 0];
+        Norm(5,:) = [-sind(theta2),  cosd(theta2), 0];
+        % Norm(5,:)=[0 1 0];
         alpha(5) = -0;
         beta(5) = 0;
         w(5)=1;
         h(5)=1;
 
         RIS(2,:)    = [0            , (y_max/5)*3      , 1.35];
-        Norm(2,:)=[1 0 0];
+        Norm(2,:) = [ cosd(theta2),  sind(theta2), 0];
+        % Norm(2,:)=[1 0 0];
         alpha(2) = -0;
         beta(2) = 0;
         w(2)=1;
         h(2)=1;
 
         RIS(6,:)    = [0            , (y_max/5)*2      , 1.35];
-        Norm(6,:)=[1 0 0];
+        Norm(6,:) = [ cosd(theta1),  sind(theta1), 0];
+        % Norm(6,:)=[1 0 0];
         alpha(6) = 0;
         beta(6) = 0;
         w(6)=1;
         h(6)=1;
 
         RIS(3,:)    = [x_max        , (y_max/5)*3      , 1.35];
-        Norm(3,:)=[-1 0 0];
+        Norm(3,:) = [-cosd(theta1), -sind(theta1), 0];
+        % Norm(3,:)=[-1 0 0];
         alpha(3) = 0;
         beta(3) = 0;
         w(3)=1;
         h(3)=1;
 
         RIS(7,:)    = [x_max        , (y_max/5)*2      , 1.35];
-        Norm(7,:)=[-1 0 0];
+        Norm(7,:) = [-cosd(theta2), -sind(theta2), 0];
+        % Norm(7,:)=[-1 0 0];
         alpha(7) = -0;
         beta(7) = 0;
         w(7)=1;
         h(7)=1;
 
         RIS(4,:)    = [(x_max/5)*3      , y_max        , 1.35];
-        Norm(4,:)=[0 -1 0];
+        Norm(4,:) = [ sind(theta2), -cosd(theta2), 0];
+        % Norm(4,:)=[0 -1 0];
         alpha(4) = -0;
         beta(4) = 0;
         w(4)=1;
         h(4)=1;
 
         RIS(8,:)    = [(x_max/5)*2      , y_max        , 1.35];
-        Norm(8,:)=[0 -1 0];
+        Norm(8,:) = [ sind(theta1), -cosd(theta1), 0];
+        % Norm(8,:)=[0 -1 0];
         alpha(8) = 0;
         beta(8) = 0;
         w(8)=1;
@@ -137,7 +149,8 @@ for RIS_config=1:3 % for RIS_config=1:1 per eseguire solo il caso con 4 OIRS
         h=zeros(12,1);
 
         RIS(1,:)    = [(x_max/10)*7      , 0            , 1.35];
-        Norm(1,:)=[0 1 0];
+        Norm(1,:) = [-sind(theta2),  cosd(theta2), 0];
+        % Norm(1,:)=[0 1 0];
         alpha(1) = 0;
         beta(1) = 0;
         w(1)=1;
@@ -151,14 +164,16 @@ for RIS_config=1:3 % for RIS_config=1:1 per eseguire solo il caso con 4 OIRS
         h(5)=1;
 
         RIS(9,:)    = [(x_max/10)*3      , 0            , 1.35];
-        Norm(9,:)=[0 1 0];
+        Norm(9,:) = [-sind(theta1),  cosd(theta1), 0];
+        % Norm(9,:)=[0 1 0];
         alpha(9) = -0;
         beta(9) = 0;
         w(9)=1;
         h(9)=1;
 
         RIS(2,:)    = [0            , (y_max/10)*7      , 1.35];
-        Norm(2,:)=[1 0 0];
+        Norm(2,:) = [ cosd(theta1),  sind(theta1), 0];
+        % Norm(2,:)=[1 0 0];
         alpha(2) = -0;
         beta(2) = 0;
         w(2)=1;
@@ -172,14 +187,16 @@ for RIS_config=1:3 % for RIS_config=1:1 per eseguire solo il caso con 4 OIRS
         h(6)=1;
 
         RIS(10,:)    = [0            , (y_max/10)*3      , 1.35];
-        Norm(10,:)=[1 0 0];
+        Norm(10,:) = [ cosd(theta2),  sind(theta2), 0];
+        % Norm(10,:)=[1 0 0];
         alpha(10) = 0;
         beta(10) = 0;
         w(10)=1;
         h(10)=1;
 
         RIS(3,:)    = [x_max        , (y_max/10)*7      , 1.35];
-        Norm(3,:)=[-1 0 0];
+        Norm(3,:) = [-cosd(theta2), -sind(theta2), 0];
+        % Norm(3,:)=[-1 0 0];
         alpha(3) = 0;
         beta(3) = 0;
         w(3)=1;
@@ -193,14 +210,16 @@ for RIS_config=1:3 % for RIS_config=1:1 per eseguire solo il caso con 4 OIRS
         h(7)=1;
 
         RIS(11,:)    = [x_max        , (y_max/10)*3      , 1.35];
-        Norm(11,:)=[-1 0 0];
+        Norm(11,:) = [-cosd(theta1), -sind(theta1), 0];
+        % Norm(11,:)=[-1 0 0];
         alpha(11) = -0;
         beta(11) = 0;
         w(11)=1;
         h(11)=1;
 
         RIS(4,:)    = [(x_max/10)*7      , y_max        , 1.35];
-        Norm(4,:)=[0 -1 0];
+        Norm(4,:) = [ sind(theta1), -cosd(theta1), 0];
+        % Norm(4,:)=[0 -1 0];
         alpha(4) = -0;
         beta(4) = 0;
         w(4)=1;
@@ -214,7 +233,8 @@ for RIS_config=1:3 % for RIS_config=1:1 per eseguire solo il caso con 4 OIRS
         h(8)=1;
 
         RIS(12,:)    = [(x_max/10)*3      , y_max        , 1.35];
-        Norm(12,:)=[0 -1 0];
+        Norm(12,:) = [ sind(theta2), -cosd(theta2), 0];
+        % Norm(12,:)=[0 -1 0];
         alpha(12) = 0;
         beta(12) = 0;
         w(12)=1;

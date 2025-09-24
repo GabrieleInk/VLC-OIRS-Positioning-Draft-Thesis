@@ -24,7 +24,6 @@ clear; clc; % close all;
 
 figure(2)
 load("figure2.mat");
-% f1=figure();
 figure(2).Position= [0 0 1200 600];
 plot(SNR_db,RMSE_RML([1 3 5],:),"LineWidth",2);
 hold on
@@ -46,7 +45,6 @@ hold off
 title('Fig. 2');
 
 % exportgraphics(gcf,'Fig2.eps','ContentType','vector','BackgroundColor','none')
-
 
 % warning('Have Matlab2TikZ in your path!');
 
@@ -193,7 +191,7 @@ title('Fig. 5(2)');
 matlab2tikz('Fig6_tikz.tex','width','\plotWidth');
 %% Figure 6 RMSE confrontato con PEB degli stimatori IWLS e ILS per due diversi valori di flusso luminoso p (1000 e 3000 lumens), in funzione delle iterazioni dell'algoritmo di adaptive beam steering
 
-%clear variables
+clear variables
 clear; clc; % close all;
 
 figure(7);
@@ -221,7 +219,7 @@ title('Fig. 6');
 
 % warning('Have Matlab2TikZ in your path!');
 
-matlab2tikz('Fig6_tikz.tex','width','\plotWidth');
+% matlab2tikz('Fig6_tikz.tex','width','\plotWidth');
 %% Figure 7.1 Performance di localizzazione basata sulla legenda di colori (freddo (~1mm) - caldo (~4mm) quindi errore commettibile più alto) con PEB, flusso luminoso fisso a 1000lm  e 2 iterazioni dell'algoritmo di adaptive beam steering
 
 clear variables
@@ -238,7 +236,7 @@ xlabel('x [m]');
 fontsize(16,"points")
 set(gca,"FontSize",22,"FontName","Times New Roman")
 hold off
-title('Fig. 7(1)');
+title('4 OIRS CRLB (PEB)');
 
 f9=figure();
 f9.Position= [0 0 900 700];
@@ -251,6 +249,7 @@ xlabel('x [m]');
 fontsize(16,"points")
 set(gca,"FontSize",22,"FontName","Times New Roman")
 hold off
+title('8 OIRS CRLB (PEB)');
 
 f10=figure();
 f10.Position= [0 0 900 700];
@@ -263,6 +262,7 @@ xlabel('x [m]');
 fontsize(16,"points")
 set(gca,"FontSize",22,"FontName","Times New Roman")
 hold off
+title('12 OIRS CRLB (PEB)');
 
 %% Figure 7.2 Performance di localizzazione basata sulla legenda di colori (freddo (~1mm) - caldo (~4mm) quindi errore commettibile più alto) con RMSE, flusso luminoso fisso a 1000lm  e 2 iterazioni dell'algoritmo di adaptive beam steering
 
@@ -295,7 +295,7 @@ xlabel('x [m]');
 fontsize(16,"points")
 set(gca,"FontSize",22,"FontName","Times New Roman")
 hold off
-title('Fig. 7(2)');
+title('4 OIRS RMSE');
 
 
 load("figure7_2_2.mat");
@@ -325,7 +325,7 @@ xlabel('x [m]');
 fontsize(16,"points")
 set(gca,"FontSize",22,"FontName","Times New Roman")
 hold off
-title('Fig. 7(2)');
+title('8 OIRS RMSE');
 
 load("figure7_2_3.mat");
 
@@ -354,7 +354,7 @@ xlabel('x [m]');
 fontsize(16,"points")
 set(gca,"FontSize",22,"FontName","Times New Roman")
 hold off
-title('Fig. 7(2)');
+title('12 OIRS RMSE');
 
 %% Figure 1-subs 
 
@@ -381,7 +381,7 @@ pbaspect([1 1 1])
 set(s,'LineStyle','none')
 ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
-title('4 OIRS CRLB');
+title('4 OIRS CRLB (PEB)');
 
 load("figure7_2_1.mat");
 
@@ -425,7 +425,7 @@ pbaspect([1 1 1])
 set(s,'LineStyle','none')
 ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
-title('8 OIRS CRLB');
+title('8 OIRS CRLB (PEB)');
 
 load("figure7_2_2.mat");
 
@@ -469,7 +469,7 @@ pbaspect([1 1 1])
 set(s,'LineStyle','none')
 ylabel("y [m]")
 xlabel('x [m]');set(gca,"FontSize",14,"FontName","Times New Roman")
-title('12 OIRS CRLB');
+title('12 OIRS CRLB (PEB)');
 
 load("figure7_2_3.mat");
 
@@ -523,7 +523,7 @@ exportgraphics(gcf,'Fig8.png','BackgroundColor','none','Resolution', 600);%,'Con
 
 %% Figure 2-subs 
 
-%clear variables
+% clear variables
 clear; clc; % close all;
 
 f15=figure();

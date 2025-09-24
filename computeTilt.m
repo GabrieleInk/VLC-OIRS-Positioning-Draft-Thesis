@@ -1,15 +1,4 @@
 function [alpha,beta] = computeTilt(RIS,LED,PD_est, N)
-%{
-RIS    = RIS(:);
-    LED    = LED(:);
-    PD_est = PD_est(:);
-    if numel(PD_est) == 2
-        PD_est = [PD_est; 0];
-    end
-    if numel(RIS) ~= 3 || numel(LED) ~= 3 || numel(PD_est) ~= 3
-        error('RIS, LED e PD_est devono essere 3D.');
-    end
-%}
 % porto l'origine del sist di rif alla posizione del RIS    
 LED= LED - RIS;
 PD_est=PD_est - RIS;
@@ -43,7 +32,7 @@ Rz = [cos(theta_z) sin(theta_z) 0;
 PD_est =(Ry * Rz * PD_est');
 LED = (Ry * Rz * LED');
 RIS = (Ry * Rz * RIS');
-
+%}
 
 % Versori di riflessione
 RS=((LED-RIS)/norm(LED-RIS));

@@ -1,4 +1,4 @@
-function crlb = generatePEB(x_scan,y_scan,LED, RIS, N, Phi_FoV, a, rho, Psi, A_pd, T_of,R_pd,p,alp,bet,K0,KN,m,alpha,beta,w,h)
+function crlb = generatePEB(x_scan,y_scan,LED, RIS, N, Phi_FoV, a, rho, Psi, A_pd, T_of,R_pd,p,alp,bet,K0,KN,m,alpha,beta,w,h) % restituisce il limite inferiore per l'errore di precisione e quindi l'errore minimo che si commette 
 
 crlb=zeros(length(x_scan),length(y_scan));
 

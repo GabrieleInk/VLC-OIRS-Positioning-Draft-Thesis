@@ -11,7 +11,7 @@ load("config.mat");
 % Set entities position
 LED     = [x_max/2      , y_max/2      , z_max    ];
 
-trials=10000; % trials=10000;
+trials=1000; % trials=10000;
 
 iterations=5;
 
@@ -27,29 +27,35 @@ beta=zeros(4,1);
 w=zeros(4,1);
 h=zeros(4,1);
 
+theta = 30;  % rotazione degli specchietti
+
 RIS(1,:)    = [x_max/2      , 0            , 1.5];
-Norm(1,:)=[0 1 0];
+% Norm(1,:) = [-sind(theta),  cosd(theta), 0];
+Norm(1,:)=[0 1 0]; % normale diretta verso +y
 initial_alpha(1) = 0;
 initial_beta(1) = 0;
 w(1)=0.6; % lunghezza dell'OIRS
 h(1)=0.6; % altezza dell'OIRS
 
 RIS(2,:)    = [0            , y_max/2      , 1.5];
-Norm(2,:)=[1 0 0];
+% Norm(2,:) = [ cosd(theta),  sind(theta), 0];
+Norm(2,:)=[1 0 0]; % normale diretta verso +x
 initial_alpha(2) = 0;
 initial_beta(2) = 0;
 w(2)=0.6;
 h(2)=0.6;
 
 RIS(3,:)    = [x_max        , y_max/2      , 1.5];
-Norm(3,:)=[-1 0 0];
+% Norm(3,:) = [-cosd(theta), -sind(theta), 0];
+Norm(3,:)=[-1 0 0]; % normale diretta verso -x
 initial_alpha(3) = 0;
 initial_beta(3) = 0;
 w(3)=0.6;
 h(3)=0.6;
 
 RIS(4,:)    = [x_max/2      , y_max        , 1.5];
-Norm(4,:)=[0 -1 0];
+% Norm(4,:) = [ sind(theta), -cosd(theta), 0];
+Norm(4,:)=[0 -1 0]; % normale diretta verso -y
 initial_alpha(4) = 0;
 initial_beta(4) = 0;
 w(4)=0.6;
@@ -85,7 +91,6 @@ for index_met=1:2:3
         end
         if covering_ris>1
             anchors=zeros(1,5);
-
             h0 = LoS_Contribution(LED', test', Phi_FoV, a, Psi, A_pd, T_of);
             [noises, thermal_var] = noisesEstimation(R_pd*p1*h0, q_0, k_B, T_k, eta, I_2, I_3, Gamma, A_pd, g_m, I_bg, G_0, B, K0);
             mu_0 = R_pd*p1*h0 + noises;
@@ -148,7 +153,7 @@ for index_met=1:2:3
                         [alpha(k),beta(k)] = computeTilt(RIS(k,:),LED,PD_est,Norm(k,:)); 
                     end
                 end
-                result(i,j,index_met)= (norm(test-PD_est'))^2;
+                result(i,j,index_met)= (norm(test-PD_est))^2;
             end
         end
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -169,7 +174,7 @@ crlb_2=ones(iterations,1)*sqrt(crlb_matrix(1,1)+crlb_matrix(2,2));
 %[1,"RML ILS"][2,"ML ILS"][3,"RML IWLS"][4,"ML IWLS"]%
 for index_met=1:2:3
     %%% START MONTECARLO %%%
-    for i=1:trials
+    parfor i=1:trials
 
         %%% LOCALIZATION ALGORITHM WITH RELAXED ESTIMATORS %%%
         alpha=initial_alpha;
@@ -246,7 +251,7 @@ for index_met=1:2:3
                         [alpha(k),beta(k)] = computeTilt(RIS(k,:),LED,PD_est,Norm(k,:)); 
                     end
                 end
-                result(i,j,index_met)= (norm(test-PD_est'))^2;
+                result(i,j,index_met)= (norm(test-PD_est))^2;
             end
         end
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -264,6 +269,5 @@ else
 end
 
 savings.Figure6_generate = elapsedtime6;  % aggiungi/aggiorna campo
-
 save("savings.mat","savings");
 

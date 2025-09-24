@@ -26,7 +26,7 @@ RMSE_RML=zeros(length(test_samples),length(angles));
 RMSE_ML=zeros(length(test_samples),length(angles));
 CRLB=zeros(length(test_samples),length(angles));
 
-times=10; % times=10000
+times=1; % times=10000
 
 d1_r_v=zeros(length(angles),times);
 d1_e_v=zeros(length(angles),times);

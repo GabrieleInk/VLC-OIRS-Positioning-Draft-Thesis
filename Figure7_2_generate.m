@@ -15,7 +15,7 @@ KN = 100;
 LED     = [x_max/2      , y_max/2      , z_max    ];
 
 trials=10; % trials=1000;
-granularity=100; % granularity=1000;
+granularity=20; % granularity=1000;
 thresh=10e-3; % soglia
 iterations=5;
 

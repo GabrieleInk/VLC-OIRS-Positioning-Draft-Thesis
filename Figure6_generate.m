@@ -19,7 +19,7 @@ K0 = 50;
 KN = 100;
 
 RIS=zeros(4,3); % matrice degli specchietti OIRS, sono (x,y) x specchietti e y 3 coordinate
-Norm=zeros(4,3);% matrice delle normali degli specchietti OIRS
+Norm=zeros(4,3);% matrice delle normali degli specchietti OIRS, serve per capire la parete in considerazione
 initial_alpha=zeros(4,1);
 initial_beta=zeros(4,1);
 alpha=zeros(4,1);
@@ -30,7 +30,6 @@ h=zeros(4,1);
 theta = 30;  % rotazione degli specchietti
 
 RIS(1,:)    = [x_max/2      , 0            , 1.5];
-% Norm(1,:) = [-sind(theta),  cosd(theta), 0];
 Norm(1,:)=[0 1 0]; % normale diretta verso +y
 initial_alpha(1) = 0;
 initial_beta(1) = 0;
@@ -38,7 +37,6 @@ w(1)=0.6; % lunghezza dell'OIRS
 h(1)=0.6; % altezza dell'OIRS
 
 RIS(2,:)    = [0            , y_max/2      , 1.5];
-% Norm(2,:) = [ cosd(theta),  sind(theta), 0];
 Norm(2,:)=[1 0 0]; % normale diretta verso +x
 initial_alpha(2) = 0;
 initial_beta(2) = 0;
@@ -46,7 +44,6 @@ w(2)=0.6;
 h(2)=0.6;
 
 RIS(3,:)    = [x_max        , y_max/2      , 1.5];
-% Norm(3,:) = [-cosd(theta), -sind(theta), 0];
 Norm(3,:)=[-1 0 0]; % normale diretta verso -x
 initial_alpha(3) = 0;
 initial_beta(3) = 0;
@@ -54,7 +51,6 @@ w(3)=0.6;
 h(3)=0.6;
 
 RIS(4,:)    = [x_max/2      , y_max        , 1.5];
-% Norm(4,:) = [ sind(theta), -cosd(theta), 0];
 Norm(4,:)=[0 -1 0]; % normale diretta verso -y
 initial_alpha(4) = 0;
 initial_beta(4) = 0;

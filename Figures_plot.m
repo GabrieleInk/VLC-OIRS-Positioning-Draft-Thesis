@@ -681,4 +681,3 @@ ax = findall(gcf, 'Type', 'Axes');
 % warning('Have Matlab2TikZ in your path!');
 
 matlab2tikz('Fig8_tikz.tex','width','\plotWidth');
-
